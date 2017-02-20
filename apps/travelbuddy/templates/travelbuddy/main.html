@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Login and Registration</title>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<style media="screen">
+    #login {
+        text-align: right;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 40px;
+        border: 1px solid black;
+        padding: 20px;
+    }
+
+    #register {
+        text-align: right;
+        display: inline-block;
+        vertical-align: top;
+        border: 1px solid black;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h1>Welcome to Travel Buddy!</h1>
+            </div>
+        </div>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="row">
+            <div class="col s12 m6 l5">
+                <h1>Login</h1>
+
+                <form class="" action="/login" method="post">
+                    {% csrf_token %}
+                    <div class="input-field col s12">
+                        <input id="email" type="text" name="email" value="">
+                        <label for="email" data-error="wrong" data-sucess="right">Email</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="password" type="text" name="password" value="" class="validate">
+                        <label for="password" data-error="wrong">Password</label>
+                    </div>
+                    <button type="submit" class="btn waves-effect waves-light" name="name" value="Login!">submit<i class="material-icons right">send</i></button>
+                </form>
+            </div>
+
+            <div class="col s12 m6 l5">
+                <h1>Register</h1>
+                <form class="" action="/register" method="post">
+                    {% csrf_token %}
+                    <div class="input-field col s12">
+                        <input id="first_name" type="text" name="first_name" value="">
+                        <label for="first_name" data-error="wrong" data-sucess="right">First Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="last_name" type="text" name="last_name" value="">
+                        <label for="last_name" data-error="wrong" data-sucess="right">Last Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="email" type="text" name="email" value="">
+                        <label for="email" data-error="wrong" data-sucess="right">Email</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="password" type="text" name="password" value="" class="validate">
+                        <label for="password" data-error="wrong">Password</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="confirm_pw" type="text" name="confirm_pw" value="" class="validate">
+                        <label for="confirm_pw" data-error="wrong">Confirm Password</label>
+                    </div>
+                    <p>password must be at least 8 characters long!</p>
+                    <button type="submit" class="btn waves-effect waves-light" name="name" value="Login!">submit<i class="material-icons right">send</i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+</body>
+
+</html>
