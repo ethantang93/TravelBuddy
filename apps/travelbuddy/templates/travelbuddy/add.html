@@ -10,32 +10,61 @@
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   </head>
   <body>
-    <div id="container">
+    <div class="container">
       <div id="header">
         <a href="/travels">HOME</a>
         <a href="/logout">LOGOUT</a>
       </div>
-      <h1>Add a trip</h1>
-      {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
+      <div class="row">
+        <div class="col s12">
+
+        </div>
+        <h1>Add a trip</h1>
+        {% if messages %}
+          <ul class="messages">
+              {% for message in messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+          </ul>
         {% endif %}
+      </div>
       <form class="" action="/travels/process" method="post">
         {% csrf_token %}
-        Destination : <input type="text" name="destination" value=""><br>
-        Description : <input type="text" name="description" value=""><br>
-        Travel Date From : <input type="Date" name="travel_from" value=""><br>
-        Travel Date To : <input type="Date" name="travel_to" value=""><br>
-        <input type="submit" name="add" value="ADD">
+        <div class="row">
+          <div class="input-field col s12 m6 l6">
+              <input id="destination" type="text" name="destination" value="">
+              <label for="destination" data-error="wrong" data-sucess="right">Destination</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+              <input id="description" type="text" name="description" value="">
+              <label for="description" data-error="wrong" data-sucess="right">Description</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <label for="travel_from">Travel From</label>
+              <input type="text" class="datepicker" id="travel_from" name="travel_from" value="">
+          </div>
+          <div class="input-field col s12 m6 l6">
+              <label for="travel_from">Travel To</label>
+              <input type="date" class="datepicker" id="travel_to" name="travel_to" value="">
+          </div>
+          <button type="submit" class="btn waves-effect waves-light" name="add" value="Login!">Add<i class="material-icons right">send</i></button>
+        </div>
       </form>
     </div>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script media="screen">
+    $(document).ready(function(){
+      $('.datepicker').pickadate({
+        selectMonths: true,
+        selectYears: 15,
+        format: 'yyyy-mm-dd'
+        });
+    })
+    </script>
   </body>
 </html>
